@@ -20,7 +20,7 @@ import java.time.Duration;
 public class Movie {
 
     @Nullable Long id;
-    @NotNull @Size(max = 100) String title; // TODO title length validation
+    @NotNull @Size(max = 100) String title;
     @NotNull @Min(1900) @Max(2100) Integer year;
     @NotNull Long director;
     @NotNull Duration length;

@@ -16,6 +16,6 @@ import lombok.experimental.FieldDefaults;
 public class Director {
 
     @Nullable Long id;
-    @NotNull @Size(max = 100) String fio; // TODO length validation
+    @NotNull @Size(max = 100) String fio;
 
 }
