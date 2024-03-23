@@ -30,10 +30,5 @@ public class JdbiConfiguration {
         rowMappers.forEach(jdbi::registerRowMapper);
         return jdbi;
     }
-//
-//    @Bean
-//    public MovieRepository movieRepository(Jdbi jdbi) {
-//        return jdbi.onDemand(MovieRepository.class);
-//    }
 
 }
