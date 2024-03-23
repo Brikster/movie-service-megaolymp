@@ -44,6 +44,9 @@ public class MovieService {
         if (movie.getId() == null) {
             id = movieRepository.insert(movie);
         } else {
+            if (movieRepository.findById(movie.getId()).isPresent()) {
+                throw new CustomIntegrityException("movie with provided ID is already exists");
+            }
             id = movieRepository.insertWithId(movie);
         }
         return movieRepository.findById(id).orElseThrow();

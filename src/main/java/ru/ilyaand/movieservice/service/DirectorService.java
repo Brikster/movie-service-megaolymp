@@ -3,6 +3,7 @@ package ru.ilyaand.movieservice.service;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
+import ru.ilyaand.movieservice.exception.CustomIntegrityException;
 import ru.ilyaand.movieservice.model.Director;
 import ru.ilyaand.movieservice.repository.DirectorRepository;
 
@@ -38,6 +39,9 @@ public class DirectorService {
         if (director.getId() == null) {
             id = directorRepository.insert(director);
         } else {
+            if (directorRepository.findById(director.getId()).isPresent()) {
+                throw new CustomIntegrityException("director with provided ID is already exists");
+            }
             id = directorRepository.insertWithId(director);
         }
         return directorRepository.findById(id).orElseThrow();
